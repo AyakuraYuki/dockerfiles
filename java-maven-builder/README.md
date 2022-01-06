@@ -1,0 +1,21 @@
+# java-maven-builder
+
+> A basic docker image for building maven project.
+
+## prepare the workspace
+
+Some folder doesn't contain jdk and maven, you need to download them by using the following links.
+
+* `maven3.8.4-openjdk11`
+  * jdk: (choose one of the following links)
+    * https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-linux-aarch64.tar.gz
+    * https://download.visualstudio.microsoft.com/download/pr/6c20711c-b0c5-4f3c-a334-9d24a6923926/043c8b8b080b31578c1b5b06080f7de4/microsoft-jdk-11.0.13.8.1-linux-aarch64.tar.gz
+  * maven:
+    * https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+
+* `maven3.8.4-openjdk11-cn`
+  * jdk: (choose one of the following links)
+    * https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-linux-aarch64.tar.gz
+    * https://download.visualstudio.microsoft.com/download/pr/6c20711c-b0c5-4f3c-a334-9d24a6923926/043c8b8b080b31578c1b5b06080f7de4/microsoft-jdk-11.0.13.8.1-linux-aarch64.tar.gz
+  * maven:
+    * https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
