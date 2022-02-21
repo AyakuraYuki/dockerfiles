@@ -2,7 +2,7 @@
 
 ## About this image
 
-* base on `ubuntu 20.04`
+* based on `ubuntu 20.04`
 * standard image has zsh, vim and git
 * `-slim` has only zsh
 * use `root` user
