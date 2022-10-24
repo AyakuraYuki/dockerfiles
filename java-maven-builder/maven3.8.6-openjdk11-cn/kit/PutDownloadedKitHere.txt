@@ -1,0 +1,5 @@
+Download links:
+
+jdk: https://aka.ms/download-jdk/microsoft-jdk-11.0.16.1-linux-x64.tar.gz
+
+maven: https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
