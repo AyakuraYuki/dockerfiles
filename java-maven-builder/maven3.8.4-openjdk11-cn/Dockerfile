@@ -13,7 +13,17 @@ COPY ulimit/sysctl.conf /etc/sysctl.conf
 USER root
 RUN mkdir -p /opt/apache-maven-repository \
     && cp /opt/sources.list /etc/apt/sources.list \
-    && cp /opt/settings.xml /opt/apache-maven/conf/settings.xml
+    && cp /opt/settings.xml /opt/apache-maven/conf/settings.xml \
+    && echo 'export LANG=en_US.utf8' >> ~/.bashrc \
+    && echo 'export JAVA_HOME=/opt/jdk' >> ~/.bashrc \
+    && echo 'export JAVA_VERSION=11.0.13' >> ~/.bashrc \
+    && echo 'export MAVEN_HOME=/opt/apache-maven' >> ~/.bashrc \
+    && echo 'export PATH="${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}"' >> ~/.bashrc \
+    && echo 'export LANG=en_US.utf8' >> ~/.bash_profile \
+    && echo 'export JAVA_HOME=/opt/jdk' >> ~/.bash_profile \
+    && echo 'export JAVA_VERSION=11.0.13' >> ~/.bash_profile \
+    && echo 'export MAVEN_HOME=/opt/apache-maven' >> ~/.bash_profile \
+    && echo 'export PATH="${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}"' >> ~/.bash_profile
 # Prepare environment variables
 ENV LANG en_US.utf8
 ENV MAVEN_HOME /opt/apache-maven
