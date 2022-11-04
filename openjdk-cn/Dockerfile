@@ -5,12 +5,16 @@
 #   1. go into the path of Dockerfile, e.g. /path/to/project/openjdk-cn
 #   2. execute the following cmds:
 #     JAVA_VERSION=<jdk-version-you-want>
-#     docker build --build-arg JAVA_VERSION=${JAVA_VERSION} -t ayakurayuki/openjdk:${JAVA_VERSION} .
+#     docker buildx build --platform=linux/amd64,linux/arm64 --build-arg JAVA_VERSION=${JAVA_VERSION} -t ayakurayuki/openjdk:${JAVA_VERSION} .
 #     docker push ayakurayuki/openjdk:${JAVA_VERSION}
 #
 # How to make an alias with image:
 #   use the following cmd:
 #     docker tag ayakurayuki/openjdk:${JAVA_VERSION} ayakurayuki/openjdk:<another-version>
+#
+# FAQ
+#   1. ERROR: multiple platforms feature is currently not supported for docker driver.
+#     > Please switch to a different driver (eg. "docker buildx create --use")
 #
 ARG JAVA_VERSION
 FROM openjdk:${JAVA_VERSION}
