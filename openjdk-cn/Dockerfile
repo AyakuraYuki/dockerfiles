@@ -5,8 +5,7 @@
 #   1. go into the path of Dockerfile, e.g. /path/to/project/openjdk-cn
 #   2. execute the following cmds:
 #     JAVA_VERSION=<jdk-version-you-want>
-#     docker buildx build --platform=linux/amd64,linux/arm64 --build-arg JAVA_VERSION=${JAVA_VERSION} -t ayakurayuki/openjdk:${JAVA_VERSION} .
-#     docker push ayakurayuki/openjdk:${JAVA_VERSION}
+#     docker buildx build --platform linux/amd64,linux/arm64 --build-arg JAVA_VERSION=${JAVA_VERSION} -t ayakurayuki/openjdk:${JAVA_VERSION} . --push
 #
 # How to make an alias with image:
 #   use the following cmd:
