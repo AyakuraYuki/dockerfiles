@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 LABEL maintainer="caih.com" \
       base.python="3.12" \
-      base.node="24.14.1"
+      base.node="24.15.0"
 
 WORKDIR /app
 
@@ -30,10 +30,10 @@ SHELL
 
 # NodeJS and Node toolkits
 RUN <<SHELL
-curl -fL https://nodejs.org/dist/v24.14.1/node-v24.14.1-linux-x64.tar.xz -o /opt/node-v24.14.1-linux-x64.tar.xz
-tar -xf /opt/node-v24.14.1-linux-x64.tar.xz -C /opt/
-rm -f /opt/node-v24.14.1-linux-x64.tar.xz
-mv /opt/node-v24.14.1-linux-x64 /opt/node
+curl -fL https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.xz -o /opt/node-v24.15.0-linux-x64.tar.xz
+tar -xf /opt/node-v24.15.0-linux-x64.tar.xz -C /opt/
+rm -f /opt/node-v24.15.0-linux-x64.tar.xz
+mv /opt/node-v24.15.0-linux-x64 /opt/node
 chmod -R 755 /opt/node
 chmod -R o+rX /opt/node
 chmod -R o+w /opt/node/lib/node_modules
