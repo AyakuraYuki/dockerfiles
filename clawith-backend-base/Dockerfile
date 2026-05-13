@@ -6,17 +6,21 @@ LABEL maintainer="caih.com" \
 
 WORKDIR /app
 
-# System dependencies
 RUN <<SHELL
 sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources
 apt-get update
+
+# System dependencies
 apt-get install -y --no-install-recommends \
-    gcc libpq-dev libpq5 curl wget \
-    shadowsocks-libev gosu telnet tree vim \
-    git xz-utils bash-completion
+    gcc libpq-dev libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 shared-mime-info pango1.0-tools
+apt-get install -y --no-install-recommends \
+    libpq5 curl shadowsocks-libev gosu bubblewrap libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 shared-mime-info pango1.0-tools fonts-wqy-microhei fonts-wqy-zenhei
+apt-get install -y --no-install-recommends \
+    curl wget telnet tree vim git xz-utils bash-completion
+
+rm -rf /var/lib/apt/lists/*
 
 echo '. /etc/bash_completion' >> /etc/bash.bashrc
-
 cat >> /root/.bashrc << 'EOF'
 
 alias ll='ls -alhF --color'
@@ -25,11 +29,7 @@ alias tree='tree -C'
 
 EOF
 
-rm -rf /var/lib/apt/lists/*
-SHELL
-
 # NodeJS and Node toolkits
-RUN <<SHELL
 curl -fL https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.xz -o /opt/node-v24.15.0-linux-x64.tar.xz
 tar -xf /opt/node-v24.15.0-linux-x64.tar.xz -C /opt/
 rm -f /opt/node-v24.15.0-linux-x64.tar.xz
