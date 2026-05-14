@@ -4,6 +4,8 @@ LABEL maintainer="caih.com" \
       base.python="3.12" \
       base.node="24.15.0"
 
+ENV AGENT_BROWSER_IDLE_TIMEOUT_MS=600000
+
 WORKDIR /app
 
 RUN <<SHELL
