@@ -16,21 +16,12 @@ apt-get install -y --no-install-recommends ca-certificates
 SHELL
 COPY config/mirrors/ubuntu-26.04.sources /etc/apt/sources.list.d/ubuntu.sources
 
-# 配置时区
+# 配置时区和安装基本工具链
 RUN <<SHELL
 apt-get update
-apt-get install -y --no-install-recommends tzdata
+apt-get install -y --no-install-recommends tzdata ca-certificates curl wget vim git telnet tree
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata
-rm -rf /var/lib/apt/lists/*
-SHELL
-
-# 安装基本工具链
-RUN <<SHELL
-apt-get update
-apt-get install -y --no-install-recommends \
-    ca-certificates curl wget vim git \
-    telnet httpie htop iotop tree
 rm -rf /var/lib/apt/lists/*
 SHELL
 
@@ -41,12 +32,10 @@ apt-get install -y --no-install-recommends curl gzip
 curl -fL 'https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-x86_64-unknown-linux-musl.tar.gz' -o /opt/btop-x86_64-unknown-linux-musl.tar.gz
 mkdir -p /opt/btop
 chmod -R 755 /opt/btop
-chmod -R 755 /opt/btop/
 tar -zxf /opt/btop-x86_64-unknown-linux-musl.tar.gz -C /opt/btop
 rm -f /opt/btop-x86_64-unknown-linux-musl.tar.gz
 chmod +x /opt/btop/bin/btop
 ln -s /opt/btop/bin/btop /usr/local/bin/btop
-tree /opt
 rm -rf /var/lib/apt/lists/*
 SHELL
 
