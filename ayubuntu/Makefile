@@ -23,9 +23,9 @@ endef
 build: ## Build image in amd64
 	@$(call check_vars)
 	@echo " - version: $(VERSION)"
-	@docker buildx build --platform linux/amd64 --file ./docker/ubuntu-26.04.dockerfile -t $(TAG)-amd64 ./docker
+	@docker buildx build --platform linux/amd64 --progress=plain --file ./docker/ubuntu-$(VERSION).dockerfile -t $(TAG)-amd64 ./docker
 
 build-aarch64: ## Build image in aarch64
 	@$(call check_vars)
 	@echo " - version: $(VERSION)"
-	@docker buildx build --platform linux/arm64 --file ./docker/ubuntu-26.04-aarch64.dockerfile -t $(TAG)-aarch64 ./docker
+	@docker buildx build --platform linux/arm64 --progress=plain --file ./docker/ubuntu-$(VERSION)-aarch64.dockerfile -t $(TAG)-aarch64 ./docker

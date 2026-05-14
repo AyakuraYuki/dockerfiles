@@ -1,9 +1,9 @@
-FROM ubuntu:26.04 AS base
+FROM ubuntu:24.04 AS base
 
 LABEL maintainer="Ayakura Yuki"     \
       base.os="ubuntu"              \
-      base.arch="aarch64"           \
-      base.version="26.04"          \
+      base.arch="amd64"             \
+      base.version="24.04"          \
       base.shell="zsh"              \
       base.timezone="Asia/Shanghai" \
       base.lang="zh_CN.UTF-8"
@@ -18,7 +18,7 @@ apt-get update
 apt-get install -y --no-install-recommends ca-certificates
 rm -rf /var/lib/apt/lists/*
 COMMANDS
-COPY config/mirrors/ubuntu-ports-26.04.sources /etc/apt/sources.list.d/ubuntu.sources
+COPY config/mirrors/ubuntu-24.04.sources /etc/apt/sources.list.d/ubuntu.sources
 
 # 安装 zsh
 COPY config/aliases.sh /opt/aliases.sh
@@ -53,7 +53,7 @@ COMMANDS
 
 # 安装遥测工具btop++
 RUN <<COMMANDS
-curl -fL 'https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-aarch64-unknown-linux-musl.tar.gz' -o /opt/btop.tar.gz
+curl -fL 'https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-x86_64-unknown-linux-musl.tar.gz' -o /opt/btop.tar.gz
 cd /opt
 tar -zxvf /opt/btop.tar.gz
 rm -f /opt/btop.tar.gz

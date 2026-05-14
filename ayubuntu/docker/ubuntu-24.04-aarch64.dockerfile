@@ -1,9 +1,9 @@
-FROM ubuntu:26.04 AS base
+FROM ubuntu:24.04 AS base
 
 LABEL maintainer="Ayakura Yuki"     \
       base.os="ubuntu"              \
       base.arch="aarch64"           \
-      base.version="26.04"          \
+      base.version="24.04"          \
       base.shell="zsh"              \
       base.timezone="Asia/Shanghai" \
       base.lang="zh_CN.UTF-8"
@@ -18,7 +18,7 @@ apt-get update
 apt-get install -y --no-install-recommends ca-certificates
 rm -rf /var/lib/apt/lists/*
 COMMANDS
-COPY config/mirrors/ubuntu-ports-26.04.sources /etc/apt/sources.list.d/ubuntu.sources
+COPY config/mirrors/ubuntu-24.04.sources /etc/apt/sources.list.d/ubuntu.sources
 
 # 安装 zsh
 COPY config/aliases.sh /opt/aliases.sh
