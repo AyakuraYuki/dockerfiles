@@ -49,5 +49,5 @@ node -v
 npm config set registry https://registry.npmmirror.com
 npm install -g agent-browser --verbose
 ln -s /opt/node/bin/agent-browser /usr/local/bin/agent-browser
-agent-browser install
+agent-browser install --with-deps
 SHELL
