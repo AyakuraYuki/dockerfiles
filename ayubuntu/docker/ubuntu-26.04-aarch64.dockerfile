@@ -9,27 +9,14 @@ LABEL maintainer="Ayakura Yuki"     \
 
 ENV TZ="Asia/Shanghai"
 
+# 使用阿里云Ubuntu镜像仓库
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends ca-certificates
-cat > /etc/apt/sources.list.d/ubuntu.sources << 'EOF'
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu-ports
-Suites: resolute resolute-updates resolute-backports
-Components: main universe restricted multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu-ports
-Suites: resolute-security
-Components: main universe restricted multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-EOF
-apt-get update
 SHELL
+COPY config/mirrors/ubuntu-ports-26.04.sources /etc/apt/sources.list.d/ubuntu.sources
 
-# Timezone
+# 配置时区
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends tzdata
@@ -38,7 +25,7 @@ dpkg-reconfigure -f noninteractive tzdata
 rm -rf /var/lib/apt/lists/*
 SHELL
 
-# Tools
+# 安装基本工具链
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends \
@@ -47,7 +34,7 @@ apt-get install -y --no-install-recommends \
 rm -rf /var/lib/apt/lists/*
 SHELL
 
-# btop++
+# 安装遥测工具btop++
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends curl gzip
@@ -64,7 +51,7 @@ rm -rf /var/lib/apt/lists/*
 SHELL
 
 # 配置Zsh+Starship
-COPY starship.toml /opt/starship.toml
+COPY config/starship.toml /opt/starship.toml
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends zsh

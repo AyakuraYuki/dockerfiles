@@ -13,22 +13,8 @@ ENV TZ="Asia/Shanghai"
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends ca-certificates
-cat > /etc/apt/sources.list.d/ubuntu.sources << 'EOF'
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu
-Suites: resolute resolute-updates resolute-backports
-Components: main universe restricted multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-Types: deb
-URIs: https://mirrors.aliyun.com/ubuntu
-Suites: resolute-security
-Components: main universe restricted multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-EOF
-apt-get update
 SHELL
+COPY config/mirrors/ubuntu-26.04.sources /etc/apt/sources.list.d/ubuntu.sources
 
 # 配置时区
 RUN <<SHELL
@@ -65,7 +51,7 @@ rm -rf /var/lib/apt/lists/*
 SHELL
 
 # 配置Zsh+Starship
-COPY starship.toml /opt/starship.toml
+COPY config/starship.toml /opt/starship.toml
 RUN <<SHELL
 apt-get update
 apt-get install -y --no-install-recommends zsh
