@@ -66,7 +66,7 @@ build-classic:
 		--build-arg TARGET_ARCH=amd64 \
 		--build-arg DISABLE_DEB822=1 \
 		--file ./docker/ubuntu.dockerfile \
-		-t $(TAG)-classic-amd64 ./docker
+		-t $(TAG)-amd64 ./docker
 
 build-classic-aarch64:
 	@$(call check_vars)
@@ -76,4 +76,4 @@ build-classic-aarch64:
 		--build-arg TARGET_ARCH=aarch64 \
 		--build-arg DISABLE_DEB822=1 \
 		--file ./docker/ubuntu.dockerfile \
-		-t $(TAG)-classic-aarch64 ./docker
+		-t $(TAG)-aarch64 ./docker
