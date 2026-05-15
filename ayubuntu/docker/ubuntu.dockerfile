@@ -47,7 +47,6 @@ else
     else
       sed -i 's|http://archive.ubuntu.com/|https://mirrors.aliyun.com/|g' /etc/apt/sources.list
     fi
-    cat /etc/apt/sources.list
 fi
 rm -rf /opt/mirrors
 COMMANDS
