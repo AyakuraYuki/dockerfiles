@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 apt update
-apt install -y --no-install-recomendeds lsb-release ca-certificates
+apt install -y --no-install-recommends lsb-release ca-certificates
 
 install -d /usr/share/postgresql-common/pgdg
 curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
