@@ -8,3 +8,9 @@
 - 使用 root 用户
 - 使用 zsh 作为默认 shell
 - 默认时区为 Asia/Shanghai，允许使用 `TZ` 环境变量定义时区
+
+## 要在 kubernetes 使用该镜像的说明
+
+因为镜像最终使用 `/bin/zsh -li` 暴露入口，常规启动会使得 Pod 立刻结束。
+
+在部署 kubernetes deployment 时，可以用 `command: ["sleep", "infinity"]` 覆盖 CMD 保活。
