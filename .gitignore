@@ -548,3 +548,6 @@ Temporary Items
 
 apache-maven-*/
 jdk-*/
+
+nginx-lua/sources/
+nginx-lua/dist/
